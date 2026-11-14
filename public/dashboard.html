@@ -1,0 +1,86 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDOR CTF Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">IDOR <span>CTF</span></div>
+        <button id="logoutBtn">Logout</button>
+    </header>
+
+    <main class="container">
+        <section class="welcome-section">
+            <h1 id="welcomeMessage">Welcome!</h1>
+            <p>Your security learning dashboard</p>
+        </section>
+
+        <section class="auth-card">
+            <h2>Account Information</h2>
+            <p id="userInfo">Loading user information...</p>
+        </section>
+
+        <section class="auth-card" style="margin-top: 25px;">
+            <h2>My Documents</h2>
+            <div id="documents">
+                Loading documents...
+            </div>
+        </section>
+
+        <section class="auth-card" style="margin-top: 25px;">
+            <h2>CTF Challenges</h2>
+            <div id="challenges">
+                Loading challenges...
+            </div>
+        </section>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDOR CTF - Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/dashboard.js" defer></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <h2>IDOR CTF</h2>
+        <button id="logoutBtn">Logout</button>
+    </nav>
+
+    <main class="dashboard-container">
+
+        <section class="welcome-section">
+            <h1>Welcome, <span id="username">User</span>!</h1>
+            <p id="userEmail"></p>
+            <p>Learn and practice Insecure Direct Object Reference (IDOR).</p>
+        </section>
+
+        <section>
+            <h2>Your Documents</h2>
+            <div id="documentsList"></div>
+        </section>
+
+        <section>
+            <h2>Available Challenges</h2>
+            <div id="challengesList"></div>
+        </section>
+
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

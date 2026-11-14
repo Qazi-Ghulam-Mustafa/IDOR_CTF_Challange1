@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IDOR CTF Challenge Plateform</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">IDOR <span>CTF</span></div>
+      <p>Web security Training Plateform</p>
+    </header>
+    <main class="container">
+      <section class="welcome-section">
+        <h1>Learn. Explore. Exploit</h1>
+        <p>
+          Practice web security through intentionally valnerable educational
+          challenges.
+        </p>
+      </section>
+
+      <section class="auth-container">
+        <div class="auth-card">
+          <h2>Welcome Back</h2>
+          <p class="subtitle">Login to your CTF account</p>
+
+          <form action="" id="loginForm">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+
+            <button type="submit">Login</button>
+            <p id="message"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>Educational CTF Platform | Practice Responsibility</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -4,7 +4,8 @@ import { validationResult } from "express-validator";
 
 export const registerUser = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, password } = req.body;
+    const email = req.body.email?.trim().toLowerCase();
 
     const errors = validationResult(req);
 
@@ -63,7 +64,9 @@ export const registerUser = async (req, res) => {
 
 export const loginUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { password } = req.body;
+    const email = req.body.email?.trim().toLowerCase();
+
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -75,7 +78,9 @@ export const loginUser = async (req, res) => {
     const user = db
       .prepare(
         `
-            SELECT * FROM users WHERE email = ?
+            SELECT id, username,email,password_hash
+            FROM users
+            WHERE email=?
         `,
       )
       .get(email);
@@ -141,7 +146,7 @@ export const loginUser = async (req, res) => {
   }
 };
 
-export const logoutUser = (req, res, next) => {
+export const logoutUser = (req, res) => {
   req.session.destroy((error) => {
     if (error) {
       console.error("Logout error", error);
@@ -158,8 +163,8 @@ export const logoutUser = (req, res, next) => {
       secure: false,
     });
     return res.status(200).json({
-      success:true,
-      message:"Logout Successfully"
-    })
+      success: true,
+      message: "Logout successfully.",
+    });
   });
 };

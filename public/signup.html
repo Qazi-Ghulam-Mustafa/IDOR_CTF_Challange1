@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | IDOR CTF</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="auth-container">
+    <div class="auth-card">
+
+      <h1>IDOR CTF</h1>
+      <h2>Create Your Account</h2>
+
+      <p>Join the platform and start solving security challenges.</p>
+
+      <form id="signupForm">
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter your username"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Create a password"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm your password"
+            required
+          >
+        </div>
+
+        <button type="submit">Create Account</button>
+
+        <p id="signupMessage"></p>
+
+      </form>
+
+      <p>
+        Already have an account?
+        <a href="http://localhost:3000/">Login</a>
+      </p>
+
+    </div>
+  </div>
+
+  <script src="js/signup.js"></script>
+</body>
+</html>
