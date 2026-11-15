@@ -45,12 +45,14 @@
 </html> -->
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IDOR CTF - Dashboard</title>
+
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/dashboard.js" defer></script>
 </head>
@@ -66,7 +68,30 @@
         <section class="welcome-section">
             <h1>Welcome, <span id="username">User</span>!</h1>
             <p id="userEmail"></p>
-            <p>Learn and practice Insecure Direct Object Reference (IDOR).</p>
+            <p>
+                Learn and practice Insecure Direct Object Reference (IDOR).
+            </p>
+        </section>
+
+        <section class="dashboard-stats">
+            <h2>Your Learning Progress</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalChallenges">0</h3>
+                    <p>Total Challenges</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 id="completedChallenges">0</h3>
+                    <p>Completed Challenges</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 id="remainingChallenges">0</h3>
+                    <p>Remaining Challenges</p>
+                </div>
+            </div>
         </section>
 
         <section>
@@ -81,6 +106,5 @@
 
     </main>
 
-    <script src="js/dashboard.js"></script>
 </body>
 </html>

@@ -96,7 +96,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     padding: 30px 20px;
 }
 
@@ -236,6 +235,81 @@ form button:hover {
     color: white;
 }
 
+.dashboard-stats {
+    margin: 35px 0 45px;
+}
+
+.dashboard-stats h2 {
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #38bdf8;
+}
+
+.stat-card h3 {
+    color: #38bdf8;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    color: #94a3b8;
+    font-size: 15px;
+}
+
+/* =========================
+   DASHBOARD SECTIONS
+========================= */
+
+.dashboard-container > section:not(.welcome-section) {
+    margin-bottom: 40px;
+}
+
+.dashboard-container > section > h2 {
+    margin-bottom: 18px;
+}
+
+/* =========================
+   DOCUMENT CARDS
+========================= */
+
+.document-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.document-card h3 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+.document-card p {
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+
 .challenge-card button:hover,
 #logoutBtn:hover {
     background: #0369a1;
@@ -285,5 +359,26 @@ footer {
 
     .dashboard-container {
         width: 94%;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-card h3 {
+        font-size: 30px;
     }
 }

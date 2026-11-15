@@ -1,104 +1,14 @@
-// const welcomeMessage = document.getElementById('welcomeMessage');
-// const userInfo = document.getElementById('userInfo');
-// const documentsContainer = document.getElementById('documents');
-// const challengesContainer = document.getElementById('challenges');
-
-// async function loadDashboard() {
-//     try {
-//         const response = await fetch('/api/dashboard');
-
-//         const data = await response.json();
-
-//         if (!response.ok) {
-//             window.location.href = '/';
-//             return;
-//         }
-
-//         welcomeMessage.textContent =
-//             `Welcome, ${data.user.username}!`;
-
-//         userInfo.textContent =
-//             `Username: ${data.user.username} | Email: ${data.user.email}`;
-
-//         displayDocuments(data.documents);
-//         displayChallenges(data.challenges);
-
-//     } catch (error) {
-//         console.error('Dashboard error:', error);
-//         userInfo.textContent = 'Unable to load dashboard.';
-//     }
-// }
-
-// function displayDocuments(documents) {
-//     documentsContainer.replaceChildren();
-
-//     if (documents.length === 0) {
-//         documentsContainer.textContent = 'No documents available.';
-//         return;
-//     }
-
-//     documents.forEach((document) => {
-//         const card = document.createElement('div');
-//         const title = document.createElement('h3');
-//         const content = document.createElement('p');
-
-//         title.textContent = document.title;
-//         content.textContent = document.content;
-
-//         card.append(title, content);
-//         documentsContainer.appendChild(card);
-//     });
-// }
-
-// function displayChallenges(challenges) {
-//     challengesContainer.replaceChildren();
-
-//     challenges.forEach((challenge) => {
-//         const card = document.createElement('div');
-//         const title = document.createElement('h3');
-//         const description = document.createElement('p');
-//         const status = document.createElement('p');
-
-//         title.textContent = challenge.title;
-//         description.textContent = challenge.description;
-
-//         status.textContent = challenge.completed
-//             ? 'Completed'
-//             : 'Not Completed';
-
-//         card.append(title, description, status);
-//         challengesContainer.appendChild(card);
-//     });
-// }
-
-// document.getElementById('logoutBtn').addEventListener('click', logout);
-
-// async function logout() {
-//     try {
-//         const response = await fetch('/api/auth/logout', {
-//             method: 'POST'
-//         });
-
-//         if (response.ok) {
-//             window.location.href = '/';
-//         } else {
-//             alert('Logout failed.');
-//         }
-
-//     } catch (error) {
-//         console.error('Logout error:', error);
-//         alert('Unable to logout.');
-//     }
-// }
-
-// loadDashboard();
-
 
 const usernameElement = document.getElementById('username');
 const emailElement = document.getElementById('userEmail');
 const documentsList = document.getElementById('documentsList');
 const challengesList = document.getElementById('challengesList');
 const logoutBtn = document.getElementById('logoutBtn');
+
+// Progress card elements
+const totalChallengesElement = document.getElementById('totalChallenges');
+const completedChallengesElement = document.getElementById('completedChallenges');
+const remainingChallengesElement = document.getElementById('remainingChallenges');
 
 // Load dashboard information
 async function loadDashboard() {
@@ -124,9 +34,9 @@ async function loadDashboard() {
         if (data.documents.length === 0) {
             documentsList.textContent = 'No documents available.';
         } else {
-            data.documents.forEach((document) => {
+            data.documents.forEach((doc) => {
                 const item = document.createElement('div');
-                item.textContent = document.title;
+                item.textContent = doc.title;
                 documentsList.appendChild(item);
             });
         }
@@ -138,7 +48,7 @@ async function loadDashboard() {
     }
 }
 
-// Load challenges
+// Load challenges and calculate progress
 async function loadChallenges() {
     try {
         const response = await fetch('/api/challenges');
@@ -153,6 +63,20 @@ async function loadChallenges() {
         if (!data.success) {
             throw new Error(data.message || 'Unable to load challenges');
         }
+
+        // Calculate challenge progress
+        const total = data.challenges.length;
+
+        const completed = data.challenges.filter(
+            (challenge) => Number(challenge.completed) === 1
+        ).length;
+
+        const remaining = total - completed;
+
+        // Update progress cards
+        totalChallengesElement.textContent = total;
+        completedChallengesElement.textContent = completed;
+        remainingChallengesElement.textContent = remaining;
 
         challengesList.innerHTML = '';
 
